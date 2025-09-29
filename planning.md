@@ -2,9 +2,9 @@
 
 ## 1. Project Overview
 - **Project Name:** Guest List Manager
-- **Description:**  
+- **Description:**
   A web application for event organizers to create events, register artists and staff, and manage guest lists. Organizers can generate unique links for each artist/staff, allowing them to edit their guest list without needing to sign up.
-- **Purpose & Goals:**  
+- **Purpose & Goals:**
   - Simplify guest list management for events.
   - Allow artists and staff to manage their own guest lists easily without waiting for someone's response.
   - Reduce administrative overhead for organizers.
@@ -58,51 +58,51 @@ This app aims to solve these problems by providing a seamless, real-time guest l
 
 ## 4. Architecture Overview
 
-- **Frontend Routes & Page Summaries:**  
+- **Frontend Routes & Page Summaries:**
 
-- `/login`  
+- `/login`
   Organizer login page.
 
-- `/dashboard`  
+- `/dashboard`
   Main organizer dashboard. View all events, event details, and guest lists.
 
-- `/events/create`  
+- `/events/create`
   Page for organizers to create a new event.
 
-- `/events/:eventId/edit`  
+- `/events/:eventId/edit`
   Edit event details, artists/staff, and guest list spot limits.
 
-- `/events/:eventId/artists`  
+- `/events/:eventId/artists`
   Manage artists/staff for a specific event (add, edit, delete, set limits).
 
-- `/guestlist/:token`  
+- `/guestlist/:token`
   Guest List Edit Page for artists/staff. Accessed via unique link; allows adding, editing, and removing guests.
 
-- `/reception/:eventId`  
+- `/reception/:eventId`
   Reception Check-In Page. Search for guests and mark them as checked in.
 
-- `/settings`  
+- `/settings`
   Organizer profile and app settings.
 
-- **API Endpoints:**  
-  - `POST /api/auth/login`  
-  - `POST /api/events`  
-  - `GET /api/events/:id`  
-  - `PUT /api/events/:id`  
-  - `DELETE /api/events/:id`  
-  - `POST /api/events/:id/artists`  
-  - `GET /api/artists/:id/guestlist`  
-  - `PUT /api/artists/:id/guestlist`  
-  - `GET /api/events/:id/guestlists`  
+- **API Endpoints:**
+  - `POST /api/auth/login`
+  - `POST /api/events`
+  - `GET /api/events/:id`
+  - `PUT /api/events/:id`
+  - `DELETE /api/events/:id`
+  - `POST /api/events/:id/artists`
+  - `GET /api/artists/:id/guestlist`
+  - `PUT /api/artists/:id/guestlist`
+  - `GET /api/events/:id/guestlists`
   - `POST /api/events/:id/export`
 
-- **Data Models:**  
-  - **User (Organizer):** id, name, email, passwordHash, createdAt  
-  - **Event:** id, organizerId, name, date, location, createdAt  
-  - **Artist/Staff:** id, eventId, name, guestListLimitFree, guestListLimitReduced, uniqueLink, createdAt  
+- **Data Models:**
+  - **User (Organizer):** id, name, email, passwordHash, createdAt
+  - **Event:** id, organizerId, name, date, location, createdAt
+  - **Artist/Staff:** id, eventId, name, guestListLimitFree, guestListLimitReduced, uniqueLink, createdAt
   - **Guest:** id, artistId, eventId, name, email, type (enum: 'free', 'reduced'), checkedIn (boolean), createdAt
 
-- **Check-In Functionality:**  
+- **Check-In Functionality:**
   - When a guest is checked in (`checkedIn: true`), their entry becomes locked (`locked: true`) and cannot be edited or deleted from the guest list.
   - The Guest List Edit Page should disable editing for checked-in guests.
   - Organizer dashboard can view check-in status for all guests.
@@ -111,7 +111,7 @@ This app aims to solve these problems by providing a seamless, real-time guest l
 
 - [Design Mockups or Wireframes] (to be created in Figma)
 - [API documentation] (OpenAPI/Swagger, to be drafted)
-- [External Libraries or Tools]  
+- [External Libraries or Tools]
   - uuid (unique link generation)
   - date-fns (date utilities)
   - dotenv (env management)
